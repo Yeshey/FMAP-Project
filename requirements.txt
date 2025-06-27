@@ -1,35 +1,35 @@
 # Core RL and Environment Libraries
-gymnasium[atari]
-ale-py
-stable-baselines3
+gymnasium[atari]>=0.29.0
+gymnasium[toy-text]
+ale-py>=0.8.1
+stable-baselines3>=2.0.0
 
 # Deep Learning Frameworks
 # PyTorch (for original code)
-torch
-torchvision
+torch>=2.1.0
+torchvision>=0.15.0
 
 # TensorFlow/Keras (for translated code)
-tensorflow>=2.13.0
-keras>=2.13.0
+tensorflow>=2.19.0,<2.20.0
+# (Standalone Keras is not needed; bundled inside TF.)
 
 # Data Processing and Utilities
-numpy
-collections-extended
+numpy>=1.24.0
+collections-extended>=0.1.0
 
 # Visualization and Video Creation
-imageio
-imageio-ffmpeg
+imageio>=2.19.0
+imageio-ffmpeg>=0.4.8
 
 # Logging and Monitoring
-tensorboard
+tensorboard>=2.19.0
 
 # Jupyter and IPython support (required for notebook execution)
-ipython
-jupyter
-ipykernel
+ipython>=8.10.0
+jupyter>=1.0.0
+ipykernel>=6.20.0
 
-# System dependencies that might be needed
-# Note: You may also need to install system-level dependencies:
+# System dependencies (install separately if needed):
 # On Ubuntu/Debian: sudo apt-get install python3-opengl xvfb
-# On macOS: These should work out of the box
-# On Windows: May need additional setup for OpenGL
+# On macOS: these should work out of the box
+# On Windows: may need additional setup for OpenGL

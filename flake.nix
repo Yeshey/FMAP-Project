@@ -32,16 +32,14 @@
         packages = [
           #pkgs.jupyter-all
           (pkgs.python312.withPackages (python-pkgs: with python-pkgs; [
-            tensorflow
-            pytorch
-            keras
-            pandas
+            # tensorflow
+            # pytorch
+            # keras
+            # pandas
             numpy
-            jupyter
-            matplotlib
-            seaborn
-            nltk # (NLP processing)
-            spacy # (NLP processing)
+            # jupyter
+            # matplotlib
+            # seaborn
             # lt
             #progressbar
             #transformers

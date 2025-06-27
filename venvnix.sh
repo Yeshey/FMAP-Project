@@ -9,8 +9,10 @@ if test -d "$VENV_FOLDER"; then
     exit 0
 fi
 
+PYTHON=$(nix eval --raw nixpkgs#python312.interpreter)
+
 echo "creating venv $1 on folder $VENV_FOLDER"
-virtualenv "$VENV_FOLDER"
+"$PYTHON" -m venv "$VENV_FOLDER"
 
 # Upgrade pip and install requirements in the new venv
 "$VENV_FOLDER/bin/pip" install --upgrade pip
