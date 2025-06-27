@@ -29,6 +29,10 @@ ipython>=8.10.0
 jupyter>=1.0.0
 ipykernel>=6.20.0
 
+#opencv-python>=4.7.0.72
+opencv-python-headless>=4.7.0.72
+#opencv-python
+
 # System dependencies (install separately if needed):
 # On Ubuntu/Debian: sudo apt-get install python3-opengl xvfb
 # On macOS: these should work out of the box

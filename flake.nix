@@ -37,6 +37,7 @@
             # keras
             # pandas
             numpy
+            opencv-python-headless
             # jupyter
             # matplotlib
             # seaborn
@@ -63,6 +64,7 @@
             #(numpy.override { blas = pkgs.openblasCompat; })
           ]))
           pkgs.virtualenv
+          pkgs.mesa
           #pkgs.chromedriver
         ];
 
