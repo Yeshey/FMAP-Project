@@ -1,4 +1,8 @@
+pong_agent.mp4
+
 PongNoFrameskip*
+!PongNoFrameskip-v4-best_19.dat
+
 runs
 pong_video.mp4
 .jupyter_ystore.db
