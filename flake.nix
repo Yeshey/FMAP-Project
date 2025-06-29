@@ -11,7 +11,10 @@
     eachSystem = f:
       nixpkgs.lib.genAttrs (import systems) (
         system:
-          f nixpkgs.legacyPackages.${system}
+          f (import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          })
       );
   in {
     devShells = eachSystem (pkgs: 
@@ -31,38 +34,70 @@
       default = pkgs.mkShell {
         packages = [
           #pkgs.jupyter-all
+          # (pkgs.python312.withPackages (python-pkgs: with python-pkgs; [
+          #   # tensorflow
+          #   # pytorch
+          #   # keras
+          #   # pandas
+          #   numpy
+          #   opencv-python-headless
+          #   # jupyter
+          #   # matplotlib
+          #   # seaborn
+          #   # lt
+          #   #progressbar
+          #   #transformers
+          #   #datasets
+
+          #   # script andre
+          #   #selenium
+          #   #webdriver-manager
+          #   #beautifulsoup4
+          #   #tqdm
+
+          #   jupyter
+          #   jupyter-collaboration
+          #   jupyterlab-git
+
+          #   #torch
+
+          #   # Add version overrides for conflicting dependencies
+          #   #(protobuf.overridePythonAttrs (old: { version = "4.25.3"; }))
+          #   #(typing-extensions.overridePythonAttrs (old: { version = "4.9.0"; }))
+          #   #(numpy.override { blas = pkgs.openblasCompat; })
+          # ]))
+
           (pkgs.python312.withPackages (python-pkgs: with python-pkgs; [
-            # tensorflow
-            # pytorch
-            # keras
-            # pandas
+            # TensorFlow with CUDA support for GPU acceleration
+            tensorflowWithCuda
+            #tensorflow-tensorboard ???
+            # tensorboard
+            
+            # Deep Learning and RL Libraries
+            stable-baselines3
+            gymnasium
+            ale-py
+            
+            # Data Processing
             numpy
             opencv-python-headless
-            # jupyter
-            # matplotlib
-            # seaborn
-            # lt
-            #progressbar
-            #transformers
-            #datasets
-
-            # script andre
-            #selenium
-            #webdriver-manager
-            #beautifulsoup4
-            #tqdm
-
+            imageio
+            imageio-ffmpeg
+            
+            # Jupyter and Development
             jupyter
             jupyter-collaboration
             jupyterlab-git
-
-            #torch
-
-            # Add version overrides for conflicting dependencies
-            #(protobuf.overridePythonAttrs (old: { version = "4.25.3"; }))
-            #(typing-extensions.overridePythonAttrs (old: { version = "4.9.0"; }))
-            #(numpy.override { blas = pkgs.openblasCompat; })
+            #ipython
+            #ipykernel
+            
+            # Additional packages from your requirements
+            collections-extended
+            
+            # Note: Some packages like gymnasium[atari] extras need to be handled differently
+            # You may need to install these via pip in a nix-shell if they're not available
           ]))
+
           pkgs.virtualenv
           pkgs.mesa
           #pkgs.chromedriver
