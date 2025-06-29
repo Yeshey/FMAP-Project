@@ -6,11 +6,12 @@ stable-baselines3>=2.0.0
 
 # Deep Learning Frameworks
 # PyTorch (for original code)
-torch>=2.1.0
-torchvision>=0.15.0
+#torch>=2.1.0
+#torchvision>=0.15.0
 
 # TensorFlow/Keras (for translated code)
 tensorflow>=2.19.0,<2.20.0
+tensorboard
 # (Standalone Keras is not needed; bundled inside TF.)
 
 # Data Processing and Utilities
