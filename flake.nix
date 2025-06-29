@@ -76,6 +76,7 @@
           echo "when running if you see this on the browser: http://127.0.0.1:8891/tree?token=6c86ed65bba3efd8ebd779bb4263094bbaaa4d9c28a648f4, that means that if you want to use the jupyternotebook server as a kernel for VSC, you need to use 6c86ed65bba3efd8ebd779bb4263094bbaaa4d9c28a648f4 as the password"
 
           # jupyter notebook
+          export LD_LIBRARY_PATH=/run/opengl-driver/lib # this allows the venv to see the GPU!!
         '';
       };
     });
