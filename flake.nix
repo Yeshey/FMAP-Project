@@ -11,7 +11,7 @@
     eachSystem = f:
       nixpkgs.lib.genAttrs (import systems) (
         system:
-          f nixpkgs.legacyPackages.${system}
+          f (import nixpkgs { inherit system; config.allowUnfree = true; })
       );
   in {
     devShells = eachSystem (pkgs: 
@@ -63,6 +63,7 @@
             #(typing-extensions.overridePythonAttrs (old: { version = "4.9.0"; }))
             #(numpy.override { blas = pkgs.openblasCompat; })
           ]))
+          pkgs.cudatoolkit
           pkgs.virtualenv
           pkgs.mesa
           #pkgs.chromedriver
