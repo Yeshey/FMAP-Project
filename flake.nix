@@ -16,6 +16,7 @@
   in {
     devShells = eachSystem (pkgs: 
     let
+      mycuda = pkgs.cudaPackages.cudatoolkit;
       #lt = pkgs.python311Packages.buildPythonPackage {
       #  pname = "lt_core_news_sm";
       #  version = "3.7.0";
@@ -63,7 +64,7 @@
             #(typing-extensions.overridePythonAttrs (old: { version = "4.9.0"; }))
             #(numpy.override { blas = pkgs.openblasCompat; })
           ]))
-          pkgs.cudatoolkit
+          mycuda
           pkgs.virtualenv
           pkgs.mesa
           #pkgs.chromedriver
@@ -78,6 +79,7 @@
 
           # jupyter notebook
           export LD_LIBRARY_PATH=/run/opengl-driver/lib # this allows the venv to see the GPU!!
+          export XLA_FLAGS="--xla_gpu_cuda_data_dir=${mycuda}"
         '';
       };
     });
